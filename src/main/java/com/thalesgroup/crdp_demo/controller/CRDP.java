@@ -31,7 +31,7 @@ public class CRDP {
 
         HttpHeaders headers = new HttpHeaders();
 		headers.set("Content-Type", "application/json");
-		String url = "http://192.168.2.221:32000/v1/protect";
+		String url = "http://crdp-service:8090/v1/protect";
         CRDPProtectRequest request = new CRDPProtectRequest();
         request.setData(bean.getData());
         request.setPolicyName("demo");
@@ -49,7 +49,7 @@ public class CRDP {
 
         HttpHeaders headers = new HttpHeaders();
 		headers.set("Content-Type", "application/json");
-		String url = "http://192.168.2.221:32000/v1/reveal";
+		String url = "http://crdp-service:8090/v1/reveal";
         CRDPRevealRequest request = new CRDPRevealRequest();
         request.setData(bean.getData());
         request.setPolicyName("demo");
