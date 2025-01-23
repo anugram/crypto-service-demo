@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: java-app
-        image: 192.168.2.221:5000/crypto-service-demo:latest
+        image: crdp-java-app:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9001
 ---
@@ -33,7 +34,7 @@ spec:
         app: crdp-app
     spec:
       containers:
-      - image: 192.168.2.221:5000/crdp:latest
+      - image: thalesciphertrust/ciphertrust-restful-data-protection:latest
         name: crdp-app
         imagePullPolicy: IfNotPresent
         env:
