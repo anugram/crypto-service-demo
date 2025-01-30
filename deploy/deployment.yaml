@@ -16,6 +16,13 @@ spec:
       - name: java-app
         image: crdp-java-app:latest
         imagePullPolicy: IfNotPresent
+        env:
+        - name: KEY_MANAGER_HOST
+          value: "192.168.2.158"
+        - name: REGISTRATION_TOKEN_CADP
+          value: "fqLvU794PR1Vs4mpVMSSKVB5Vtb1CKgtfQGza6ps1F3rSwHaLrMPRjWUfPhfgBE1"
+        - name: PROTECTION_POLICY
+          value: "demo"
         ports:
         - containerPort: 9001
 ---

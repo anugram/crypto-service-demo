@@ -1,6 +1,7 @@
 package com.thalesgroup.crdp_demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -22,6 +23,9 @@ import com.thalesgroup.crdp_demo.model.Payload;
  */
 @RestController
 public class CRDP {
+    @Value("${PROTECTION_POLICY}")
+    private String protectionPolicy;
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -34,7 +38,7 @@ public class CRDP {
 		String url = "http://crdp-service:8090/v1/protect";
         CRDPProtectRequest request = new CRDPProtectRequest();
         request.setData(bean.getData());
-        request.setPolicyName("demo");
+        request.setPolicyName(protectionPolicy);
 
         HttpEntity<CRDPProtectRequest> entity = new HttpEntity<>(request, headers);
         ResponseEntity<CRDPProtectResponse> CRDPResponse = restTemplate.exchange(url, HttpMethod.POST, entity, CRDPProtectResponse.class);
@@ -52,7 +56,7 @@ public class CRDP {
 		String url = "http://crdp-service:8090/v1/reveal";
         CRDPRevealRequest request = new CRDPRevealRequest();
         request.setData(bean.getData());
-        request.setPolicyName("demo");
+        request.setPolicyName(protectionPolicy);
         request.setUsername(bean.getUsername());
 
         HttpEntity<CRDPRevealRequest> entity = new HttpEntity<>(request, headers);
