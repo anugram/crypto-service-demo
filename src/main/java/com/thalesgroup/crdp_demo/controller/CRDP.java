@@ -23,7 +23,7 @@ import com.thalesgroup.crdp_demo.model.Payload;
  */
 @RestController
 public class CRDP {
-    @Value("${PROTECTION_POLICY}")
+    @Value("${PROTECTION_POLICY:PPName}")
     private String protectionPolicy;
 
     @Autowired

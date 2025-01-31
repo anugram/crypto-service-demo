@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
 import org.apache.commons.codec.binary.Base64;
 
 import com.clientmanagement.CipherTextData;
@@ -14,15 +15,20 @@ import com.clientmanagement.RegisterClientParameters;
 import com.clientmanagement.policy.CryptoManager;
 import com.thalesgroup.crdp_demo.model.Payload;
 
+/**
+ * @author CipherTrust.io
+ *
+ */
+@RestController
 public class CADP {
 
-    @Value("${KEY_MANAGER_HOST}")
+    @Value("${KEY_MANAGER_HOST:10.10.10.10}")
     private String cmIP;
 
-    @Value("${REGISTRATION_TOKEN_CADP}")
+    @Value("${REGISTRATION_TOKEN_CADP:REG_TOKEN}")
     private String regtokenCADPApp;
 
-    @Value("${PROTECTION_POLICY}")
+    @Value("${PROTECTION_POLICY:PPName}")
     private String protectionPolicy;
 
     @PostMapping("/api/cadp/protect")
